@@ -11,15 +11,16 @@ $(document).ready(function() {
                 method: "GET"
         }).then(function (response) {
                 var data = response.data;
-                for (var i = 0; i < data.length; i++) {
+                for (var i = 0; i < 10; i++) {
                     var charDiv = $("<div>");
                     var p = $("<p>").text("Rating: " + data[i].rating);
                     //Set up img tag and its attributes
                         var charImage = $("<img>");
                         charImage.attr("class", "gif")//adds class = 'gif'
-                        charImage.attr("src", data[i].images.fixed_height.url);//animateULR
+                        charImage.attr("src", data[i].images.fixed_height.url);//srcURL
+                        charImage.attr("data-animate", data[i].images.fixed_height.url);//animateURL
                         charImage.attr("data-state", "animate")//set state to animate
-                        charImage.attr("data-still", data[i].images.original_still.url)//stillURL
+                        charImage.attr("data-still", data[i].images.fixed_height_still.url)//stillURL
                     charDiv.append(p);
                     charDiv.append(charImage);
                     $("#gifs-appear-here").prepend(charDiv);
@@ -29,18 +30,18 @@ $(document).ready(function() {
     });
 
     //Pause gifs on click
-    $(".gif").on("click", function (pauseGif) {
-        alert(".gif clicked");
-        
-        // state = $(this).attr("data-state");
-        // console.log("data-state: " + state);
-        // if (state === "still") {
-        //     $(this).attr("src", $(this).attr("data-animate"));
-        //     $(this).attr("data-state", "animate");
-        // } else {
-        //     $(this).attr("src", $(this).attr("data-still"));
-        //     $(this).attr("data-state", "still");
-        // }
+    $("body").on("click", ".gif", function (pauseGif) {
+     
+
+        var state = $(this).attr("data-state");
+        console.log("data-state: " + state);
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
     });
 
 });
