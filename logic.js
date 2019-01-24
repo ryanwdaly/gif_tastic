@@ -1,7 +1,27 @@
 $(document).ready(function() {
 
+    //Initialize global array and add companion buttons
+    charArray = ["goku", "freeza", "piccalo", "krillin"];
+    charArray.forEach(function(character) {
+        addButton(character);
+    });
+
+    //Add character button
+    $("#add-character").on("click", function() {
+        event.preventDefault();
+        var input = $("#character-input").val();
+        $("#character-input").val("");
+        if (!input || isButton(input)) {
+            return;
+        } else {
+            charArray.push(input)
+            addButton(input);
+        }
+    });
+
     //Get gifs based on character button
-    $("button").on("click", function (getGifs) {
+    $("body").on("click", "button", function () {
+       $("#gif-container").empty();
         var dbzChar = $(this).attr("data-character");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             dbzChar + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -23,18 +43,15 @@ $(document).ready(function() {
                         charImage.attr("data-still", data[i].images.fixed_height_still.url)//stillURL
                     charDiv.append(p);
                     charDiv.append(charImage);
-                    $("#gifs-appear-here").prepend(charDiv);
+                    $("#gif-container").prepend(charDiv);
                 }
         });
              
     });
 
     //Pause gifs on click
-    $("body").on("click", ".gif", function (pauseGif) {
-     
-
+    $("body").on("click", ".gif", function () {
         var state = $(this).attr("data-state");
-        console.log("data-state: " + state);
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
@@ -44,4 +61,27 @@ $(document).ready(function() {
         }
     });
 
+    //Hotkey events
+    $(document).keypress(function(event) {
+        var key = event.key.toLowerCase();
+        if (key === "enter") {
+            $("#add-character").click();
+            
+        }
+    })
+   
 });
+
+//Helper Methods
+function addButton(character) {
+    var newButton = $("<button>").attr("data-character", character);
+    newButton.append(character);
+    $("#button-container").append(newButton);
+}
+function isButton(character) {
+    if (charArray.includes(character)) {
+        return true;
+    } else {
+        return false;
+    }
+}
