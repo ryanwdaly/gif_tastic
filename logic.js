@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     //Initialize global array and add companion buttons
-    charArray = ["goku", "freeza", "piccalo", "krillin"];
+    charArray = ["goku", "freeza", "piccalo", "krillin", "vegeta", "gohan", "majin buu", "bulma", "cell"];
     charArray.forEach(function(character) {
         addButton(character);
     });
@@ -16,6 +16,7 @@ $(document).ready(function() {
         } else {
             charArray.push(input)
             addButton(input);
+            $("body button").click();
         }
     });
 
@@ -33,10 +34,11 @@ $(document).ready(function() {
                 var data = response.data;
                 for (var i = 0; i < 10; i++) {
                     var charDiv = $("<div>");
+                    // charDiv.attr("class", "w3")
                     var p = $("<p>").text("Rating: " + data[i].rating);
                     //Set up img tag and its attributes
                         var charImage = $("<img>");
-                        charImage.attr("class", "gif")//adds class = 'gif'
+                        charImage.attr("class", "gif w4-col")//adds class = 'gif'
                         charImage.attr("src", data[i].images.fixed_height.url);//srcURL
                         charImage.attr("data-animate", data[i].images.fixed_height.url);//animateURL
                         charImage.attr("data-state", "animate")//set state to animate
@@ -66,7 +68,6 @@ $(document).ready(function() {
         var key = event.key.toLowerCase();
         if (key === "enter") {
             $("#add-character").click();
-            
         }
     })
    
@@ -75,6 +76,7 @@ $(document).ready(function() {
 //Helper Methods
 function addButton(character) {
     var newButton = $("<button>").attr("data-character", character);
+    newButton.attr("class", "btn btn-primary gif-button");
     newButton.append(character);
     $("#button-container").append(newButton);
 }
