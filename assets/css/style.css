@@ -10,7 +10,7 @@ body {
     color: #777777; */
     background: url("../images/dbz_background.jpg");
     height: 100%; 
-    
+    background-color: #509ee6;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -45,7 +45,7 @@ html {
     
 }
 #dbz-description {
-    font-family: 'ZCOOL KuaiLe', cursive;
+    
     font-size: 25px;
     font-weight: 900;
     letter-spacing: 1px;
@@ -62,13 +62,12 @@ html {
     width: 50%;
     padding: 0;
 }
-.gif {
-    /* padding: 25px; */
-}
+
 #gif-container {
    
   margin: auto;
   width: 100;
+  justify-content: space-between;
 }
 .gif-button {
     width: 100px;
@@ -77,6 +76,13 @@ html {
     background-color: #ec8a04;
     border: none;
 }
+.rating {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    background-color: green;
+    
+}
+
 
 @media only screen and (max-width: 600px) {
     #jumbo-container {
@@ -97,4 +103,10 @@ html {
     opacity: 1;
     
     }
+
+    #button-container {
+    margin: auto;
+    width: 100%;
+    padding: 0;
+}
 }

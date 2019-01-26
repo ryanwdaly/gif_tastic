@@ -21,7 +21,7 @@ $(document).ready(function() {
         } else {
             charArray.push(input)
             addButton(input);
-            $("body button").click();
+            
         }
     });
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
                 for (var i = 0; i < 6; i++) {
                     var charDiv = $("<div>");
                     // charDiv.attr("class", "w3")
-                    var p = $("<p>").text("Rating: " + data[i].rating);
+                    var p = $("<p>").text("Rated: " + data[i].rating.toUpperCase()).attr("class", "rating");
                     //Set up img tag and its attributes
                         var charImage = $("<img>");
                         charImage.attr("class", "gif w4-col")//adds class = 'gif'
@@ -85,6 +85,7 @@ function addButton(character) {
     newButton.attr("class", "btn btn-primary gif-button");
     newButton.append(character);
     $("#button-container").append(newButton);
+    $("body button").click();
 }
 function isButton(character) {
     if (charArray.includes(character)) {
