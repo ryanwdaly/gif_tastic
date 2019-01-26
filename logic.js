@@ -1,5 +1,9 @@
+//TO DO: 
+//  -make gif display look better (add spacing, center)
+//  -add css for character input
+//  -make ratings look better
+//
 $(document).ready(function() {
-
     //Initialize global array and add companion buttons
     charArray = ["goku", "freeza", "piccalo", "krillin", "vegeta", "gohan", "majin buu", "bulma", "cell"];
     charArray.forEach(function(character) {
@@ -11,6 +15,7 @@ $(document).ready(function() {
         event.preventDefault();
         var input = $("#character-input").val();
         $("#character-input").val("");
+
         if (!input || isButton(input)) {
             return;
         } else {
@@ -32,7 +37,8 @@ $(document).ready(function() {
                 method: "GET"
         }).then(function (response) {
                 var data = response.data;
-                for (var i = 0; i < 10; i++) {
+
+                for (var i = 0; i < 6; i++) {
                     var charDiv = $("<div>");
                     // charDiv.attr("class", "w3")
                     var p = $("<p>").text("Rating: " + data[i].rating);
@@ -43,12 +49,12 @@ $(document).ready(function() {
                         charImage.attr("data-animate", data[i].images.fixed_height.url);//animateURL
                         charImage.attr("data-state", "animate")//set state to animate
                         charImage.attr("data-still", data[i].images.fixed_height_still.url)//stillURL
+                    
                     charDiv.append(p);
                     charDiv.append(charImage);
                     $("#gif-container").prepend(charDiv);
                 }
-        });
-             
+        });  
     });
 
     //Pause gifs on click
@@ -66,11 +72,11 @@ $(document).ready(function() {
     //Hotkey events
     $(document).keypress(function(event) {
         var key = event.key.toLowerCase();
+
         if (key === "enter") {
             $("#add-character").click();
         }
     })
-   
 });
 
 //Helper Methods

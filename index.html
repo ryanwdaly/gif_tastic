@@ -7,21 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="icon" href="assets/images/dragon_ball_icon.ico" hype="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="logic.js"></script>
     <title>DBZ Gifs+</title>
 </head>
 <body>
-
+    
     <div class="jumbotron" id="jumbo-container">
-        <h1 class="display-5">Welcome to DBZ Gifs+!</h1>
-        <p class="lead">The following input sends an API to access giphy.com and returns the top 10 responses.
-            Warning: Content is not always DBZ related. Proceed at your own risk.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+        <h1 id="dbz-title" class="display-5" >Welcome to DBZ Gifs+!</h1>
+        <p id="dbz-description" class="lead">The following input sends an API to access giphy.com and returns the top 6 responses.
+            Warning: Content is not always DBZ related, nor is it always apropriate. Proceed at your own risk.</p>
     </div>
     
     <div id="input-container">
@@ -29,7 +25,6 @@
     </div>
     <br>
     <div id="button-container"></div>
-    
     <div id="gif-container" class="container row"></div>
 </body>
 </html>

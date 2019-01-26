@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'SayanSansFont';
+  src: url('sayan_sans_font.ttf');
+}
+
 body {
     /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 18px;
@@ -22,15 +27,31 @@ html {
 }
 
 #jumbo-container {
-    height: 250px;
+    
     width: 940px;
-    background-color: black;
-    opacity: 0.5;
+    /* background-color:#e10818; */
+    background-color: #509ee6;
+    opacity: 0.95;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 0px;
     margin-bottom: 50px;
+    padding: 25px;
 }
-
+#dbz-title {
+    font-family: 'SayanSansFont';
+    font-size: 100px;
+    color: #ec8a04;
+    opacity: 1;
+    
+}
+#dbz-description {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-align: center;
+}
 #input-container {
     margin: auto;
     width: 50%;
@@ -53,4 +74,27 @@ html {
     width: 100px;
     padding: 10px;
     margin: 5px;
+    background-color: #ec8a04;
+    border: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #jumbo-container {
+    width: 300px;
+    /* background-color:#e10818; */
+    background-color: #509ee6;
+    opacity: 0.95;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    padding: 25px;
+    }
+
+    #dbz-title {
+    font-family: 'SayanSansFont';
+    font-size: 25px;
+    color: #ec8a04;
+    opacity: 1;
+    
+    }
 }
